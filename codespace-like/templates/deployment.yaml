@@ -47,7 +47,7 @@ spec:
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
-            - name: {{ include "codespace-like.fullname" . }}
+            - name: work
               mountPath: /home/coder/work
           {{- with .Values.volumeMounts }}
             {{- toYaml . | nindent 12 }}
