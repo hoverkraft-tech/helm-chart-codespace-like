@@ -1,0 +1,40 @@
+---
+name: Shared - Continuous Integration for common tasks
+
+on: # yamllint disable-line rule:truthy
+  workflow_call:
+
+permissions: {}
+
+jobs:
+  linter:
+    uses: hoverkraft-tech/ci-github-common/.github/workflows/linter.yml@b17226e57c8ef31f860719766656ebb6df017218 # 0.31.6
+    permissions:
+      actions: read
+      contents: read
+      statuses: write
+      security-events: write
+    with:
+      # FIXME: Remove useless linters on next super-linter release
+      linter-env: |
+        VALIDATE_KUBERNETES_KUBECONFORM=false
+
+  tests-charts:
+    name: Tests - Charts
+    runs-on: "ubuntu-latest"
+    permissions:
+      contents: read
+    steps:
+      - name: Test helm charts
+        uses: hoverkraft-tech/ci-github-container/actions/helm/test-chart@a0bab9151cc074af9f6c8204ab42a48d2d570379 # 0.30.6
+        with:
+          helm-repositories: |
+            bitnami https://charts.bitnami.com/bitnami
+            jetstack https://charts.jetstack.io
+          helm-set: |
+            global.railsSecretKey=\$RAILS_SECRET_KEY
+            global.signingKey=\$SIGNING_KEY
+            cert-manager.enabled=true
+        env:
+          RAILS_SECRET_KEY: ${{ secrets.RAILS_SECRET_KEY }}
+          SIGNING_KEY: ${{ secrets.SIGNING_KEY }}

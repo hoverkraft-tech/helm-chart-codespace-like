@@ -1,0 +1,77 @@
+---
+name: 🚀 Release
+
+on: # yamllint disable-line rule:truthy
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions: {}
+
+jobs:
+  check-branches:
+    name: Check branches
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check branch
+        run: |
+          if [[ "${{ github.ref_name }}" != "${{ github.event.repository.default_branch }}" ]]; then
+            echo "This action can only be run on the ${{ github.event.repository.default_branch }} branch"
+            exit 1
+          fi
+          echo "Branch check passed. Proceeding with the release."
+
+  ci:
+    needs: check-branches
+    name: Continuous Integration
+    uses: ./.github/workflows/__shared-ci.yml
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+      statuses: write
+    secrets: inherit
+
+  release:
+    needs: ci
+    name: Release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    outputs:
+      tag: ${{ steps.create-release.outputs.tag }}
+    steps:
+      - id: create-release
+        uses: hoverkraft-tech/ci-github-publish/actions/release/create@84e8ace407055e7a40ba6670a8c697e1ce2dfafa # 0.20.1
+
+  release-chart:
+    name: "Release Helm Chart"
+    needs: release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: write
+      pull-requests: write
+    steps:
+      - id: release
+        uses: hoverkraft-tech/ci-github-container/actions/helm/release-chart@a0bab9151cc074af9f6c8204ab42a48d2d570379 # 0.30.6
+        with:
+          chart: codespace-like
+          path: ./codespace-like
+          tag: ${{ needs.release.outputs.tag }}
+          oci-registry: ghcr.io
+          oci-registry-password: ${{ secrets.GITHUB_TOKEN }}
+          update-tag-paths: .version
+
+      - uses: hoverkraft-tech/ci-github-common/actions/create-and-merge-pull-request@b17226e57c8ef31f860719766656ebb6df017218 # 0.31.6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          branch: release-chart-${{ needs.release.outputs.tag }}
+          title: "ci: release chart ${{ needs.release.outputs.tag }}"
+          body: Release app and chart version ${{ needs.release.outputs.tag }}
+          commit-message: |
+            ci: release chart ${{ needs.release.outputs.tag }}
+
+            [skip ci]
