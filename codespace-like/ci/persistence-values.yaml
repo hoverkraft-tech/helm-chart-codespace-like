@@ -1,0 +1,3 @@
+persistence:
+  storageClass: dummy
+  size: 1Gi
