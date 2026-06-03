@@ -30,9 +30,9 @@ jobs:
     permissions:
       contents: read
     steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
 
-      - uses: hoverkraft-tech/ci-github-container/actions/helm/generate-docs@a0bab9151cc074af9f6c8204ab42a48d2d570379 # 0.30.6
+      - uses: hoverkraft-tech/ci-github-container/actions/helm/generate-docs@5396e1258d209f9af18e55da8692361508e3338c # 0.36.2
         with:
           working-directory: ./codespace-like
           values-file: ./codespace-like/values.yaml
