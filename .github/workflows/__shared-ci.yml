@@ -27,14 +27,3 @@ jobs:
     steps:
       - name: Test helm charts
         uses: hoverkraft-tech/ci-github-container/actions/helm/test-chart@a0bab9151cc074af9f6c8204ab42a48d2d570379 # 0.30.6
-        with:
-          helm-repositories: |
-            bitnami https://charts.bitnami.com/bitnami
-            jetstack https://charts.jetstack.io
-          helm-set: |
-            global.railsSecretKey=\$RAILS_SECRET_KEY
-            global.signingKey=\$SIGNING_KEY
-            cert-manager.enabled=true
-        env:
-          RAILS_SECRET_KEY: ${{ secrets.RAILS_SECRET_KEY }}
-          SIGNING_KEY: ${{ secrets.SIGNING_KEY }}
