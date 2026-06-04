@@ -5,7 +5,8 @@
 replicaCount: 1
 
 image:
-  repository: ghcr.io/hoverkraft-tech/docker-base-images/codespace-like
+  # repository: ghcr.io/hoverkraft-tech/docker-base-images/codespace-like
+  repository: webofmars/codespace-like
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
