@@ -1,5 +1,1 @@
-.env
-.helm
-.idea
-.venv
 .ci-github-nodejs-cache
