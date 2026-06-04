@@ -61,7 +61,7 @@
           "type": "string"
         },
         "repository": {
-          "default": "ghcr.io/hoverkraft-tech/docker-base-images/codespace-like",
+          "default": "webofmars/codespace-like",
           "title": "repository",
           "type": "string"
         },
@@ -91,10 +91,9 @@
       "additionalProperties": false,
       "properties": {
         "annotations": {
-          "additionalProperties": false,
+          "additionalProperties": true,
           "required": [],
-          "title": "annotations",
-          "type": "object"
+          "title": "ingress annotations"
         },
         "className": {
           "default": "",
@@ -107,7 +106,6 @@
           "type": "boolean"
         },
         "hosts": {
-          "description": "kubernetes.io/ingress.class: nginx\nkubernetes.io/tls-acme: \"true\"",
           "items": {
             "anyOf": [
               {
@@ -171,7 +169,6 @@
       "required": [
         "enabled",
         "className",
-        "annotations",
         "hosts",
         "tls"
       ],
