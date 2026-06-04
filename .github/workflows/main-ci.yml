@@ -35,5 +35,5 @@ jobs:
       - uses: hoverkraft-tech/ci-github-container/actions/helm/generate-docs@5396e1258d209f9af18e55da8692361508e3338c # 0.36.2
         with:
           values-file: ./codespace-like/values.yaml
-          github-app-id: ${{ vars.CI_BOT_APP_ID }}
+          github-app-client-id: ${{ vars.CI_BOT_APP_CLIENT_ID }}
           github-app-key: ${{ secrets.CI_BOT_APP_PRIVATE_KEY }}
