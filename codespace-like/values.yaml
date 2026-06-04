@@ -3,10 +3,14 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
+# FIXME: this is for compatibility with hoverkraft CI
+#        see https://github.com/hoverkraft-tech/ci-github-container/issues/815
+namespace: ~
+
 replicaCount: 1
 
 image:
-  repository: webofmars/codespace-like
+  repository: ghcr.io/hoverkraft-tech/docker-base-images/codespace-like
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
@@ -76,11 +80,15 @@ resources: {}
 
 livenessProbe:
   httpGet:
-    path: /
+    path: /healthz
     port: http
 readinessProbe:
   httpGet:
-    path: /
+    path: /healthz
+    port: http
+startupProbe:
+  httpGet:
+    path: /healthz
     port: http
 
 autoscaling:

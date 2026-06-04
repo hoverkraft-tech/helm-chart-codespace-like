@@ -61,7 +61,7 @@
           "type": "string"
         },
         "repository": {
-          "default": "webofmars/codespace-like",
+          "default": "ghcr.io/hoverkraft-tech/docker-base-images/codespace-like",
           "title": "repository",
           "type": "string"
         },
@@ -182,7 +182,7 @@
           "additionalProperties": false,
           "properties": {
             "path": {
-              "default": "/",
+              "default": "/healthz",
               "title": "path",
               "type": "string"
             },
@@ -210,6 +210,12 @@
       "default": "",
       "title": "nameOverride",
       "type": "string"
+    },
+    "namespace": {
+      "default": "~",
+      "description": "FIXME: this is for compatibility with hoverkraft CI\n       see https://github.com/hoverkraft-tech/ci-github-container/issues/815",
+      "title": "namespace",
+      "type": "null"
     },
     "nodeSelector": {
       "additionalProperties": false,
@@ -269,7 +275,7 @@
           "additionalProperties": false,
           "properties": {
             "path": {
-              "default": "/",
+              "default": "/healthz",
               "title": "path",
               "type": "string"
             },
@@ -369,6 +375,37 @@
       "title": "serviceAccount",
       "type": "object"
     },
+    "startupProbe": {
+      "additionalProperties": false,
+      "properties": {
+        "httpGet": {
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "default": "/healthz",
+              "title": "path",
+              "type": "string"
+            },
+            "port": {
+              "default": "http",
+              "title": "port",
+              "type": "string"
+            }
+          },
+          "required": [
+            "path",
+            "port"
+          ],
+          "title": "httpGet",
+          "type": "object"
+        }
+      },
+      "required": [
+        "httpGet"
+      ],
+      "title": "startupProbe",
+      "type": "object"
+    },
     "tolerations": {
       "items": {
         "required": []
@@ -394,6 +431,7 @@
     }
   },
   "required": [
+    "namespace",
     "replicaCount",
     "image",
     "imagePullSecrets",
@@ -409,6 +447,7 @@
     "resources",
     "livenessProbe",
     "readinessProbe",
+    "startupProbe",
     "autoscaling",
     "persistence",
     "volumes",

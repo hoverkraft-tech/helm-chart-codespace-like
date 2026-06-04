@@ -10,6 +10,11 @@ spec:
   containers:
     - name: wget
       image: busybox
-      command: ['wget']
-      args: ['{{ include "codespace-like.fullname" . }}:{{ .Values.service.port }}']
+      command:
+        - 'wget'
+        - -q
+        - -O
+        - '/dev/null'
+      args:
+        - http://{{ include "codespace-like.fullname" . }}:{{ .Values.service.port }}/healthz
   restartPolicy: Never
