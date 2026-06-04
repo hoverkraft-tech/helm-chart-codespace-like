@@ -5,6 +5,9 @@
 
 # FIXME: this is for compatibility with hoverkraft CI
 #        see https://github.com/hoverkraft-tech/ci-github-container/issues/815
+# @schema
+# type: [null, string]
+# @schema
 namespace: ~
 
 replicaCount: 1
