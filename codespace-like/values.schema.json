@@ -309,10 +309,9 @@
       "type": "integer"
     },
     "resources": {
-      "additionalProperties": false,
+      "additionalProperties": true,
       "required": [],
-      "title": "resources",
-      "type": "object"
+      "title": "resources"
     },
     "securityContext": {
       "additionalProperties": false,
@@ -447,7 +446,6 @@
     "securityContext",
     "service",
     "ingress",
-    "resources",
     "livenessProbe",
     "readinessProbe",
     "startupProbe",
