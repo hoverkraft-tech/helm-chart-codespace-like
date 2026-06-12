@@ -30,9 +30,9 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
 
-      - uses: hoverkraft-tech/ci-github-container/actions/helm/generate-docs@5396e1258d209f9af18e55da8692361508e3338c # 0.36.2
+      - uses: hoverkraft-tech/ci-github-container/actions/helm/generate-docs@c9088e8447c5a8be45157e17701023fc50ccb1c0 # 0.37.2
         with:
           values-file: ./codespace-like/values.yaml
           github-app-client-id: ${{ vars.CI_BOT_APP_CLIENT_ID }}
