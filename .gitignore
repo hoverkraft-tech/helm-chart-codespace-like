@@ -3,3 +3,6 @@
 .idea
 .venv
 .ci-github-nodejs-cache
+
+# used by Github Actions and can be commited if not ignored
+node_modules
