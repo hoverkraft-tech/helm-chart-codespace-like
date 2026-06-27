@@ -3,8 +3,8 @@ name: helm-chart-codespace-like
 description: A Helm chart for deploying a codespace-like dev server
 icon: "https://raw.githubusercontent.com/kubernetes/community/master/icons/png/resources/unlabeled/deploy-128.png"
 type: application
-version: 0.1.4
-appVersion: "0.4.0"
+version: 0.1.5
+appVersion: "0.5.2"
 maintainers:
   - name: "webofmars"
     email: "contact@webofmars.com"
