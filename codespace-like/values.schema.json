@@ -41,6 +41,47 @@
       "title": "autoscaling",
       "type": "object"
     },
+    "docker": {
+      "additionalProperties": true,
+      "properties": {
+        "enabled": {
+          "default": false,
+          "title": "enabled",
+          "type": "boolean"
+        },
+        "image": {
+          "additionalProperties": false,
+          "properties": {
+            "repository": {
+              "default": "docker",
+              "title": "repository",
+              "type": "string"
+            },
+            "tag": {
+              "default": "dind",
+              "title": "tag",
+              "type": "string"
+            }
+          },
+          "required": [
+            "repository",
+            "tag"
+          ],
+          "title": "image",
+          "type": "object"
+        },
+        "resources": {
+          "additionalProperties": true,
+          "required": [],
+          "title": "resources"
+        }
+      },
+      "required": [
+        "enabled",
+        "image"
+      ],
+      "title": "docker"
+    },
     "fullnameOverride": {
       "default": "",
       "title": "fullnameOverride",
@@ -213,12 +254,11 @@
     },
     "namespace": {
       "default": "~",
-      "description": "FIXME: this is for compatibility with hoverkraft CI\n       see https://github.com/hoverkraft-tech/ci-github-container/issues/815",
       "required": [],
       "title": "namespace",
       "type": [
-        "null",
-        "string"
+        "string",
+        "null"
       ]
     },
     "nodeSelector": {
