@@ -20,6 +20,10 @@ A Helm chart for deploying a codespace-like dev server
 | autoscaling.maxReplicas                    | int    | `100`                                                         |             |
 | autoscaling.minReplicas                    | int    | `1`                                                           |             |
 | autoscaling.targetCPUUtilizationPercentage | int    | `80`                                                          |             |
+| docker.enabled                             | bool   | `false`                                                       |             |
+| docker.image.repository                    | string | `"docker"`                                                    |             |
+| docker.image.tag                           | string | `"dind"`                                                      |             |
+| docker.resources                           | object | `{}`                                                          |             |
 | fullnameOverride                           | string | `""`                                                          |             |
 | image.pullPolicy                           | string | `"IfNotPresent"`                                              |             |
 | image.repository                           | string | `"ghcr.io/hoverkraft-tech/docker-base-images/codespace-like"` |             |
