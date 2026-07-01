@@ -74,11 +74,30 @@
           "additionalProperties": true,
           "required": [],
           "title": "resources"
+        },
+        "volume": {
+          "additionalProperties": false,
+          "description": "We usually recommend not to specify default resources and to leave this as a conscious\nchoice for the user. This also increases chances charts run on environments with little\nresources, such as Minikube. If you do want to specify resources, uncomment the following\nlines, adjust them as necessary, and remove the curly braces after 'resources:'.\nlimits:\n  cpu: 100m\n  memory: 128Mi\nrequests:\n  cpu: 100m\n  memory: 128Mi",
+          "properties": {
+            "sizeLimit": {
+              "default": "~",
+              "required": [],
+              "title": "sizeLimit",
+              "type": [
+                "null",
+                "string"
+              ]
+            }
+          },
+          "required": [],
+          "title": "volume",
+          "type": "object"
         }
       },
       "required": [
         "enabled",
-        "image"
+        "image",
+        "volume"
       ],
       "title": "docker"
     },

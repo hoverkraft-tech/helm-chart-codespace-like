@@ -48,6 +48,12 @@ docker:
     # requests:
     #   cpu: 100m
     #   memory: 128Mi
+  volume:
+  # @schema
+  # title: sizeLimit
+  # type: [null, string]
+  # @schema
+    sizeLimit: ~
 
 serviceAccount:
   # Specifies whether a service account should be created
