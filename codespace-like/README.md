@@ -1,6 +1,6 @@
 # helm-chart-codespace-like
 
-![Version: 0.2.0](https://img.shields.io/badge/Version-0.2.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.6.0](https://img.shields.io/badge/AppVersion-0.6.0-informational?style=flat-square)
+![Version: 0.3.0](https://img.shields.io/badge/Version-0.3.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.6.0](https://img.shields.io/badge/AppVersion-0.6.0-informational?style=flat-square)
 
 A Helm chart for deploying a codespace-like dev server
 
@@ -24,6 +24,7 @@ A Helm chart for deploying a codespace-like dev server
 | docker.image.repository                    | string | `"docker"`                                                    |             |
 | docker.image.tag                           | string | `"dind"`                                                      |             |
 | docker.resources                           | object | `{}`                                                          |             |
+| docker.volume.sizeLimit                    | string | `nil`                                                         |             |
 | fullnameOverride                           | string | `""`                                                          |             |
 | image.pullPolicy                           | string | `"IfNotPresent"`                                              |             |
 | image.repository                           | string | `"ghcr.io/hoverkraft-tech/docker-base-images/codespace-like"` |             |

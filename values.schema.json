@@ -1,520 +1,244 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "additionalProperties": false,
-  "properties": {
-    "affinity": {
-      "additionalProperties": false,
-      "required": [],
-      "title": "affinity",
-      "type": "object"
-    },
-    "autoscaling": {
-      "additionalProperties": false,
-      "properties": {
-        "enabled": {
-          "default": false,
-          "title": "enabled",
-          "type": "boolean"
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+        "affinity": {
+            "type": "object"
         },
-        "maxReplicas": {
-          "default": 100,
-          "title": "maxReplicas",
-          "type": "integer"
+        "autoscaling": {
+            "type": "object",
+            "properties": {
+                "enabled": {
+                    "type": "boolean"
+                },
+                "maxReplicas": {
+                    "type": "integer"
+                },
+                "minReplicas": {
+                    "type": "integer"
+                },
+                "targetCPUUtilizationPercentage": {
+                    "type": "integer"
+                }
+            }
         },
-        "minReplicas": {
-          "default": 1,
-          "title": "minReplicas",
-          "type": "integer"
+        "docker": {
+            "type": "object",
+            "properties": {
+                "enabled": {
+                    "type": "boolean"
+                },
+                "image": {
+                    "type": "object",
+                    "properties": {
+                        "repository": {
+                            "type": "string"
+                        },
+                        "tag": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "resources": {
+                    "type": "object"
+                },
+                "volume": {
+                    "type": "object",
+                    "properties": {
+                        "sizeLimit": {
+                            "type": "null"
+                        }
+                    }
+                }
+            }
         },
-        "targetCPUUtilizationPercentage": {
-          "default": 80,
-          "title": "targetCPUUtilizationPercentage",
-          "type": "integer"
-        }
-      },
-      "required": [
-        "enabled",
-        "minReplicas",
-        "maxReplicas",
-        "targetCPUUtilizationPercentage"
-      ],
-      "title": "autoscaling",
-      "type": "object"
-    },
-    "docker": {
-      "additionalProperties": true,
-      "properties": {
-        "enabled": {
-          "default": false,
-          "title": "enabled",
-          "type": "boolean"
+        "fullnameOverride": {
+            "type": "string"
         },
         "image": {
-          "additionalProperties": false,
-          "properties": {
-            "repository": {
-              "default": "docker",
-              "title": "repository",
-              "type": "string"
-            },
-            "tag": {
-              "default": "dind",
-              "title": "tag",
-              "type": "string"
+            "type": "object",
+            "properties": {
+                "pullPolicy": {
+                    "type": "string"
+                },
+                "repository": {
+                    "type": "string"
+                },
+                "tag": {
+                    "type": "string"
+                }
             }
-          },
-          "required": [
-            "repository",
-            "tag"
-          ],
-          "title": "image",
-          "type": "object"
+        },
+        "imagePullSecrets": {
+            "type": "array"
+        },
+        "ingress": {
+            "type": "object",
+            "properties": {
+                "annotations": {
+                    "type": "object"
+                },
+                "className": {
+                    "type": "string"
+                },
+                "enabled": {
+                    "type": "boolean"
+                },
+                "hosts": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "host": {
+                                "type": "string"
+                            },
+                            "paths": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "path": {
+                                            "type": "string"
+                                        },
+                                        "pathType": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tls": {
+                    "type": "array"
+                }
+            }
+        },
+        "livenessProbe": {
+            "type": "object",
+            "properties": {
+                "httpGet": {
+                    "type": "object",
+                    "properties": {
+                        "path": {
+                            "type": "string"
+                        },
+                        "port": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "nameOverride": {
+            "type": "string"
+        },
+        "namespace": {
+            "type": "null"
+        },
+        "nodeSelector": {
+            "type": "object"
+        },
+        "persistence": {
+            "type": "object",
+            "properties": {
+                "enbaled": {
+                    "type": "boolean"
+                },
+                "size": {
+                    "type": "string"
+                },
+                "storageClass": {
+                    "type": "string"
+                }
+            }
+        },
+        "podAnnotations": {
+            "type": "object"
+        },
+        "podLabels": {
+            "type": "object"
+        },
+        "podSecurityContext": {
+            "type": "object"
+        },
+        "readinessProbe": {
+            "type": "object",
+            "properties": {
+                "httpGet": {
+                    "type": "object",
+                    "properties": {
+                        "path": {
+                            "type": "string"
+                        },
+                        "port": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "replicaCount": {
+            "type": "integer"
         },
         "resources": {
-          "additionalProperties": true,
-          "required": [],
-          "title": "resources"
+            "type": "object"
         },
-        "volume": {
-          "additionalProperties": false,
-          "description": "We usually recommend not to specify default resources and to leave this as a conscious\nchoice for the user. This also increases chances charts run on environments with little\nresources, such as Minikube. If you do want to specify resources, uncomment the following\nlines, adjust them as necessary, and remove the curly braces after 'resources:'.\nlimits:\n  cpu: 100m\n  memory: 128Mi\nrequests:\n  cpu: 100m\n  memory: 128Mi",
-          "properties": {
-            "sizeLimit": {
-              "default": "~",
-              "required": [],
-              "title": "sizeLimit",
-              "type": [
-                "null",
-                "string"
-              ]
-            }
-          },
-          "required": [],
-          "title": "volume",
-          "type": "object"
-        }
-      },
-      "required": [
-        "enabled",
-        "image",
-        "volume"
-      ],
-      "title": "docker"
-    },
-    "fullnameOverride": {
-      "default": "",
-      "title": "fullnameOverride",
-      "type": "string"
-    },
-    "global": {
-      "description": "Global values are values that can be accessed from any chart or subchart by exactly the same name.",
-      "required": [],
-      "title": "global",
-      "type": "object"
-    },
-    "image": {
-      "additionalProperties": false,
-      "properties": {
-        "pullPolicy": {
-          "default": "IfNotPresent",
-          "title": "pullPolicy",
-          "type": "string"
+        "securityContext": {
+            "type": "object"
         },
-        "repository": {
-          "default": "ghcr.io/hoverkraft-tech/docker-base-images/codespace-like",
-          "title": "repository",
-          "type": "string"
-        },
-        "tag": {
-          "default": "",
-          "description": "Overrides the image tag whose default is the chart appVersion.",
-          "title": "tag",
-          "type": "string"
-        }
-      },
-      "required": [
-        "repository",
-        "pullPolicy",
-        "tag"
-      ],
-      "title": "image",
-      "type": "object"
-    },
-    "imagePullSecrets": {
-      "items": {
-        "required": []
-      },
-      "title": "imagePullSecrets",
-      "type": "array"
-    },
-    "ingress": {
-      "additionalProperties": false,
-      "properties": {
-        "annotations": {
-          "additionalProperties": true,
-          "required": [],
-          "title": "ingress annotations"
-        },
-        "className": {
-          "default": "",
-          "title": "className",
-          "type": "string"
-        },
-        "enabled": {
-          "default": false,
-          "title": "enabled",
-          "type": "boolean"
-        },
-        "hosts": {
-          "items": {
-            "anyOf": [
-              {
-                "additionalProperties": false,
-                "properties": {
-                  "host": {
-                    "default": "chart-example.local",
-                    "title": "host",
-                    "type": "string"
-                  },
-                  "paths": {
-                    "items": {
-                      "anyOf": [
-                        {
-                          "additionalProperties": false,
-                          "properties": {
-                            "path": {
-                              "default": "/",
-                              "title": "path",
-                              "type": "string"
-                            },
-                            "pathType": {
-                              "default": "ImplementationSpecific",
-                              "title": "pathType",
-                              "type": "string"
-                            }
-                          },
-                          "required": [
-                            "path",
-                            "pathType"
-                          ],
-                          "type": "object"
-                        }
-                      ],
-                      "required": []
-                    },
-                    "title": "paths",
-                    "type": "array"
-                  }
+        "service": {
+            "type": "object",
+            "properties": {
+                "port": {
+                    "type": "integer"
                 },
-                "required": [
-                  "host",
-                  "paths"
-                ],
-                "type": "object"
-              }
-            ],
-            "required": []
-          },
-          "title": "hosts",
-          "type": "array"
-        },
-        "tls": {
-          "items": {
-            "required": []
-          },
-          "title": "tls",
-          "type": "array"
-        }
-      },
-      "required": [
-        "enabled",
-        "className",
-        "hosts",
-        "tls"
-      ],
-      "title": "ingress",
-      "type": "object"
-    },
-    "livenessProbe": {
-      "additionalProperties": false,
-      "properties": {
-        "httpGet": {
-          "additionalProperties": false,
-          "properties": {
-            "path": {
-              "default": "/healthz",
-              "title": "path",
-              "type": "string"
-            },
-            "port": {
-              "default": "http",
-              "title": "port",
-              "type": "string"
+                "type": {
+                    "type": "string"
+                }
             }
-          },
-          "required": [
-            "path",
-            "port"
-          ],
-          "title": "httpGet",
-          "type": "object"
-        }
-      },
-      "required": [
-        "httpGet"
-      ],
-      "title": "livenessProbe",
-      "type": "object"
-    },
-    "nameOverride": {
-      "default": "",
-      "title": "nameOverride",
-      "type": "string"
-    },
-    "namespace": {
-      "default": "~",
-      "required": [],
-      "title": "namespace",
-      "type": [
-        "string",
-        "null"
-      ]
-    },
-    "nodeSelector": {
-      "additionalProperties": false,
-      "required": [],
-      "title": "nodeSelector",
-      "type": "object"
-    },
-    "persistence": {
-      "additionalProperties": false,
-      "properties": {
-        "enbaled": {
-          "default": true,
-          "title": "enbaled",
-          "type": "boolean"
         },
-        "size": {
-          "default": "100Mi",
-          "title": "size",
-          "type": "string"
-        },
-        "storageClass": {
-          "default": "",
-          "title": "storageClass",
-          "type": "string"
-        }
-      },
-      "required": [
-        "enbaled",
-        "storageClass",
-        "size"
-      ],
-      "title": "persistence",
-      "type": "object"
-    },
-    "podAnnotations": {
-      "additionalProperties": false,
-      "required": [],
-      "title": "podAnnotations",
-      "type": "object"
-    },
-    "podLabels": {
-      "additionalProperties": false,
-      "required": [],
-      "title": "podLabels",
-      "type": "object"
-    },
-    "podSecurityContext": {
-      "additionalProperties": false,
-      "required": [],
-      "title": "podSecurityContext",
-      "type": "object"
-    },
-    "readinessProbe": {
-      "additionalProperties": false,
-      "properties": {
-        "httpGet": {
-          "additionalProperties": false,
-          "properties": {
-            "path": {
-              "default": "/healthz",
-              "title": "path",
-              "type": "string"
-            },
-            "port": {
-              "default": "http",
-              "title": "port",
-              "type": "string"
+        "serviceAccount": {
+            "type": "object",
+            "properties": {
+                "annotations": {
+                    "type": "object"
+                },
+                "automount": {
+                    "type": "boolean"
+                },
+                "create": {
+                    "type": "boolean"
+                },
+                "name": {
+                    "type": "string"
+                }
             }
-          },
-          "required": [
-            "path",
-            "port"
-          ],
-          "title": "httpGet",
-          "type": "object"
-        }
-      },
-      "required": [
-        "httpGet"
-      ],
-      "title": "readinessProbe",
-      "type": "object"
-    },
-    "replicaCount": {
-      "default": 1,
-      "title": "replicaCount",
-      "type": "integer"
-    },
-    "resources": {
-      "additionalProperties": true,
-      "required": [],
-      "title": "resources"
-    },
-    "securityContext": {
-      "additionalProperties": false,
-      "required": [],
-      "title": "securityContext",
-      "type": "object"
-    },
-    "service": {
-      "additionalProperties": false,
-      "properties": {
-        "port": {
-          "default": 8080,
-          "title": "port",
-          "type": "integer"
         },
-        "type": {
-          "default": "ClusterIP",
-          "title": "type",
-          "type": "string"
-        }
-      },
-      "required": [
-        "type",
-        "port"
-      ],
-      "title": "service",
-      "type": "object"
-    },
-    "serviceAccount": {
-      "additionalProperties": false,
-      "properties": {
-        "annotations": {
-          "additionalProperties": false,
-          "description": "Annotations to add to the service account",
-          "required": [],
-          "title": "annotations",
-          "type": "object"
-        },
-        "automount": {
-          "default": true,
-          "description": "Automatically mount a ServiceAccount's API credentials?",
-          "title": "automount",
-          "type": "boolean"
-        },
-        "create": {
-          "default": true,
-          "description": "Specifies whether a service account should be created",
-          "title": "create",
-          "type": "boolean"
-        },
-        "name": {
-          "default": "",
-          "description": "The name of the service account to use.\nIf not set and create is true, a name is generated using the fullname template",
-          "title": "name",
-          "type": "string"
-        }
-      },
-      "required": [
-        "create",
-        "automount",
-        "annotations",
-        "name"
-      ],
-      "title": "serviceAccount",
-      "type": "object"
-    },
-    "startupProbe": {
-      "additionalProperties": false,
-      "properties": {
-        "httpGet": {
-          "additionalProperties": false,
-          "properties": {
-            "path": {
-              "default": "/healthz",
-              "title": "path",
-              "type": "string"
-            },
-            "port": {
-              "default": "http",
-              "title": "port",
-              "type": "string"
+        "startupProbe": {
+            "type": "object",
+            "properties": {
+                "httpGet": {
+                    "type": "object",
+                    "properties": {
+                        "path": {
+                            "type": "string"
+                        },
+                        "port": {
+                            "type": "string"
+                        }
+                    }
+                }
             }
-          },
-          "required": [
-            "path",
-            "port"
-          ],
-          "title": "httpGet",
-          "type": "object"
+        },
+        "tolerations": {
+            "type": "array"
+        },
+        "volumeMounts": {
+            "type": "array"
+        },
+        "volumes": {
+            "type": "array"
         }
-      },
-      "required": [
-        "httpGet"
-      ],
-      "title": "startupProbe",
-      "type": "object"
-    },
-    "tolerations": {
-      "items": {
-        "required": []
-      },
-      "title": "tolerations",
-      "type": "array"
-    },
-    "volumeMounts": {
-      "description": "Additional volumeMounts on the output Deployment definition.",
-      "items": {
-        "required": []
-      },
-      "title": "volumeMounts",
-      "type": "array"
-    },
-    "volumes": {
-      "description": "Additional volumes on the output Deployment definition.",
-      "items": {
-        "required": []
-      },
-      "title": "volumes",
-      "type": "array"
     }
-  },
-  "required": [
-    "replicaCount",
-    "image",
-    "imagePullSecrets",
-    "nameOverride",
-    "fullnameOverride",
-    "serviceAccount",
-    "podAnnotations",
-    "podLabels",
-    "podSecurityContext",
-    "securityContext",
-    "service",
-    "ingress",
-    "livenessProbe",
-    "readinessProbe",
-    "startupProbe",
-    "autoscaling",
-    "persistence",
-    "volumes",
-    "volumeMounts",
-    "nodeSelector",
-    "tolerations",
-    "affinity"
-  ],
-  "type": "object"
 }

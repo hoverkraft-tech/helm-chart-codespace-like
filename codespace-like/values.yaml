@@ -49,10 +49,10 @@ docker:
     #   cpu: 100m
     #   memory: 128Mi
   volume:
-  # @schema
-  # title: sizeLimit
-  # type: [null, string]
-  # @schema
+    # @schema
+    # title: sizeLimit
+    # type: [null, string]
+    # @schema
     sizeLimit: ~
 
 serviceAccount:
