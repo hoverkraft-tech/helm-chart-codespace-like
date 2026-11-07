@@ -19,8 +19,11 @@ jobs:
     permissions:
       actions: read
       contents: read
-      statuses: write
+      issues: write
+      packages: read
+      pull-requests: write
       security-events: write
+      statuses: write
     secrets: inherit
 
   helm-docs:

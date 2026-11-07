@@ -2,6 +2,9 @@
 version: 2
 updates:
   - package-ecosystem: "github-actions"
+    commit-message:
+      prefix: build
+      include: scope
     directory: "/"
     open-pull-requests-limit: 20
     schedule:
@@ -14,6 +17,9 @@ updates:
           - "*"
 
   - package-ecosystem: "helm"
+    commit-message:
+      prefix: build
+      include: scope
     directory: "/codespace-like"
     open-pull-requests-limit: 20
     schedule:
