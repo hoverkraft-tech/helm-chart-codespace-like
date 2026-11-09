@@ -32,4 +32,4 @@ jobs:
       contents: read
     steps:
       - name: Test helm charts
-        uses: hoverkraft-tech/ci-github-container/actions/helm/test-chart@5396e1258d209f9af18e55da8692361508e3338c # 0.36.2
+        uses: hoverkraft-tech/ci-github-container/actions/helm/test-chart@5ffc3c81daacc57700a14bb91d67edbc67eedc1d # 0.39.0
