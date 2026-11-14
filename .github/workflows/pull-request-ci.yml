@@ -14,7 +14,7 @@ permissions: {}
 jobs:
   ci:
     name: Continuous Integration
-    uses: ./.github/workflows/__shared-ci.yml
+    uses: $/.github/workflows/__shared-ci.yml
     permissions:
       actions: read
       contents: read
@@ -23,4 +23,3 @@ jobs:
       pull-requests: write
       security-events: write
       statuses: write
-    secrets: inherit
