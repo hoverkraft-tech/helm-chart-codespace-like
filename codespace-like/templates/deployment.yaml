@@ -113,7 +113,11 @@ spec:
         {{- if .Values.docker.enabled }}
         - name: docker-data
           emptyDir:
-            sizeLimit: {{ .Values.docker.volume.sizeLimit }}
+            {{- with .Values.docker.volume.sizeLimit }}
+            sizeLimit: {{ . | quote }}
+            {{- else }}
+            {}
+            {{- end }}
         - name: docker-certs
           emptyDir: {}
         {{- end }}
