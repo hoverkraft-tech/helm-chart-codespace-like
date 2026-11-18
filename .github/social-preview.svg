@@ -109,9 +109,11 @@
     <g id="g450" transform="translate(-1.8048329,0.05142862)">
       <text
         xml:space="preserve"
-        style="font-size:27.262px;font-family:Inter, sans-serif;font-variation-settings:'opsz' 32, 'wght' 900;fill:#001d20;stroke-width:6.74977;stroke-linecap:round;stroke-linejoin:bevel;paint-order:markers fill stroke"
+        style="font-size:22.5px;font-family:Inter, sans-serif;font-variation-settings:'opsz' 32, 'wght' 900;fill:#001d20;stroke-width:6.74977;stroke-linecap:round;stroke-linejoin:bevel;paint-order:markers fill stroke"
         x="73.222"
         y="23.137991"
+        textLength="118"
+        lengthAdjust="spacingAndGlyphs"
         id="text5155-2"
       >Codespace Like</text>
     </g>
