@@ -90,6 +90,10 @@ spec:
           imagePullPolicy: Always
           securityContext:
             privileged: true
+            runAsNonRoot: false
+            runAsUser: 0
+            runAsGroup: 0
+            allowPrivilegeEscalation: true
         {{- end }}
         - name: coder
           # checkov:skip=CKV_K8S_43:Chart users can override image reference to use digests.
