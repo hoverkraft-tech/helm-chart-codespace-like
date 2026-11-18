@@ -1,13 +1,1 @@
-podSecurityContext:
-  runAsNonRoot: false
-  runAsUser: 0
-  runAsGroup: 0
-
-securityContext:
-  allowPrivilegeEscalation: true
-  capabilities:
-    drop: []
-  readOnlyRootFilesystem: false
-  runAsNonRoot: false
-  runAsUser: 0
-  runAsGroup: 0
+{}
