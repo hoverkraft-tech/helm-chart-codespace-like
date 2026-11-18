@@ -99,6 +99,10 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
+            - name: HOME
+              value: /home/coder/work
+            - name: XDG_CONFIG_HOME
+              value: /home/coder/work/.config
           {{- if .Values.docker.enabled }}
             - name: DOCKER_HOST
               value: tcp://localhost:2376
