@@ -42,7 +42,7 @@ A Helm chart for deploying a codespace-like dev server
 | nameOverride                               | string | `""`                                                          |             |
 | namespace                                  | string | `nil`                                                         |             |
 | nodeSelector                               | object | `{}`                                                          |             |
-| persistence.enbaled                        | bool   | `true`                                                        |             |
+| persistence.enabled                        | bool   | `true`                                                        |             |
 | persistence.size                           | string | `"100Mi"`                                                     |             |
 | persistence.storageClass                   | string | `""`                                                          |             |
 | podAnnotations                             | object | `{}`                                                          |             |

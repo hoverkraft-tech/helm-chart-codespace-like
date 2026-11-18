@@ -1,8 +1,9 @@
-{{- if .Values.persistence.enbaled }}
+{{- if .Values.persistence.enabled }}
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: {{ include "codespace-like.fullname" . }}
+  namespace: {{ .Release.Namespace }}
   labels:
     {{- include "codespace-like.labels" . | nindent 4 }}
 spec:

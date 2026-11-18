@@ -2,6 +2,11 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ include "codespace-like.fullname" . }}
+  namespace: {{ .Release.Namespace }}
+  annotations:
+    checkov.io/skip1: CKV_K8S_21=Release namespace is selected at install time.
+    checkov.io/skip2: CKV2_K8S_6=Network policy must be defined per target cluster.
+    checkov.io/skip3: CKV_K8S_43=Chart users can pin image digests in values.
   labels:
     {{- include "codespace-like.labels" . | nindent 4 }}
 spec:
@@ -28,11 +33,27 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       serviceAccountName: {{ include "codespace-like.serviceAccountName" . }}
+      automountServiceAccountToken: {{ .Values.serviceAccount.automount }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
         {{- if .Values.docker.enabled }}
         - name: docker
+          # checkov:skip=CKV_K8S_20:Docker-in-Docker requires privileged mode.
+          # checkov:skip=CKV_K8S_22:Docker daemon needs write access to its filesystem.
+          # checkov:skip=CKV_K8S_23:Docker daemon runs as root inside the sidecar.
+          # checkov:skip=CKV_K8S_28:CAP_SYS_ADMIN is required by Docker-in-Docker.
+          # checkov:skip=CKV_K8S_30:Privileged sidecar is intentional for Docker-in-Docker.
+          # checkov:skip=CKV_K8S_31:Sidecar seccomp is runtime-dependent for privileged mode.
+          # checkov:skip=CKV_K8S_37:Docker-in-Docker needs extended Linux capabilities.
+          # checkov:skip=CKV_K8S_40:Docker-in-Docker runs as root by design.
+          # trivy:ignore:KSV-0001
+          # trivy:ignore:KSV-0012
+          # trivy:ignore:KSV-0014
+          # trivy:ignore:KSV-0020
+          # trivy:ignore:KSV-0104
+          # trivy:ignore:KSV-0106
+          # trivy:ignore:KSV-0118
           image: "{{ .Values.docker.image.repository }}:{{ .Values.docker.image.tag }}"
           env:
             - name: DOCKER_TLS_CERTDIR
@@ -66,11 +87,13 @@ spec:
           {{- end }}
           terminationMessagePath: /dev/termination-log
           terminationMessagePolicy: File
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           securityContext:
             privileged: true
         {{- end }}
         - name: coder
+          # checkov:skip=CKV_K8S_43:Chart users can override image reference to use digests.
+          # trivy:ignore:KSV-0125
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"

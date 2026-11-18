@@ -4,16 +4,15 @@ Run a personal, browser-based development workspace on your Kubernetes cluster.
 
 [![Continuous Integration](https://github.com/hoverkraft-tech/helm-chart-codespace-like/actions/workflows/main-ci.yml/badge.svg)](https://github.com/hoverkraft-tech/helm-chart-codespace-like/actions/workflows/main-ci.yml)
 [![Release](https://img.shields.io/github/v/release/hoverkraft-tech/helm-chart-codespace-like)](https://github.com/hoverkraft-tech/helm-chart-codespace-like/releases)
-[![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen)](docs/development/linting.md)
+[![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen)](https://github.com/hoverkraft-tech/helm-chart-codespace-like/issues)
 
 ## Prerequisites
 
-A Kubernetes cluster, a configured kubectl context and Helm with OCI registry support. Persistent storage and an ingress controller are needed when enabling those features.
+A Kubernetes cluster, a configured kubectl context, and Helm with OCI registry support.
 
 ## Install
 
-Review the [chart values](codespace-like/values.yaml), save your settings in `my-values.yaml`,
-then install a published chart:
+Review [chart values](codespace-like/values.yaml), save your settings in `my-values.yaml`, then install:
 
 ```sh
 helm upgrade --install codespace-like oci://ghcr.io/hoverkraft-tech/helm-chart-codespace-like/charts/codespace-like/helm-chart-codespace-like \
@@ -21,18 +20,16 @@ helm upgrade --install codespace-like oci://ghcr.io/hoverkraft-tech/helm-chart-c
   --values my-values.yaml
 ```
 
-See [usage and configuration](docs/usage/installation.md) for more details.
+## Development
+
+Install Git, GNU Make, Docker with BuildKit, Helm, and kubectl.
+Run `make lint`, `make lint-fix`, or `make lint '[.]github/'` from the repository root.
+Open the repository in the dev container for the same tools and commands.
 
 ## Contributing
 
-Open an issue or pull request to discuss changes. The [contributor guide](docs/development/linting.md)
-describes the dev container and local lint commands.
+Open an issue or pull request to discuss changes.
 
 ## Maintainer
 
 Maintained by [Hoverkraft](https://hoverkraft.cloud).
-
-## License
-
-This repository does not currently provide a top-level license.
-Bundled third-party code retains its own license.
