@@ -256,9 +256,9 @@
 		"persistence": {
 			"additionalProperties": false,
 			"properties": {
-				"enbaled": {
+				"enabled": {
 					"default": true,
-					"title": "enbaled",
+					"title": "enabled",
 					"type": "boolean"
 				},
 				"size": {
@@ -272,7 +272,7 @@
 					"type": "string"
 				}
 			},
-			"required": ["enbaled", "storageClass", "size"],
+			"required": ["enabled", "storageClass", "size"],
 			"title": "persistence",
 			"type": "object"
 		},
@@ -289,7 +289,7 @@
 			"type": "object"
 		},
 		"podSecurityContext": {
-			"additionalProperties": false,
+			"additionalProperties": true,
 			"required": [],
 			"title": "podSecurityContext",
 			"type": "object"
@@ -331,7 +331,7 @@
 			"title": "resources"
 		},
 		"securityContext": {
-			"additionalProperties": false,
+			"additionalProperties": true,
 			"required": [],
 			"title": "securityContext",
 			"type": "object"
@@ -365,7 +365,7 @@
 					"type": "object"
 				},
 				"automount": {
-					"default": true,
+					"default": false,
 					"description": "Automatically mount a ServiceAccount's API credentials?",
 					"title": "automount",
 					"type": "boolean"
