@@ -1,37 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640" width="1280" height="640" role="img" aria-labelledby="title desc">
-  <title id="title">Codespace Like by Hoverkraft</title>
-  <desc id="desc">Brand social preview for the Codespace Like Helm chart.</desc>
+  <title id="title">Codespace Like project social preview</title>
+  <desc id="desc">Project logo on the left and project name on the right.</desc>
   <rect width="1280" height="640" fill="#f5f8fc" />
-  <rect x="0" y="0" width="16" height="640" fill="#1998ff" />
 
-  <g transform="translate(56 186) scale(0.96)">
-    <g style="clip-rule:evenodd;fill-rule:evenodd;image-rendering:optimizeQuality;shape-rendering:geometricPrecision;text-rendering:geometricPrecision">
-      <rect width="241.36835" height="247.86084" x="6.3385172" y="8.1042032" ry="17.481256" fill="#1998ff" />
-      <g>
-        <rect width="241.38019" height="41.468822" x="6.3635287" y="214.77875" ry="17.481256" fill="#506690" />
-        <path d="m247.67244,230.81893-0.0483,-15.32094c-0.022,-6.98321-27.35297,-18.91692-43.36154,-17.92354-6.6801,0.41452-14.53817,0.36281-49.53107,14.16878-28.35454,11.18689-34.96193,-30.26526-70.015148,-7.92166-20.263413,12.91629-65.028945,11.74938-46.402413,-11.9186 3.864005,-4.90984-31.952291,6.60201-31.9883626,27.10666l-0.022164,12.59927" fill="#506690" />
+  <g transform="translate(220 190)">
+    <g transform="scale(0.78)">
+      <g style="clip-rule:evenodd;fill-rule:evenodd;image-rendering:optimizeQuality;shape-rendering:geometricPrecision;text-rendering:geometricPrecision">
+        <g />
+        <rect width="241.36835" height="247.86084" x="6.3385172" y="8.1042032" ry="17.481256" fill="#1998ff" />
+        <g />
+        <g>
+          <rect width="241.38019" height="41.468822" x="6.3635287" y="214.77875" ry="17.481256" fill="#506690" />
+          <path d="m247.67244,230.81893-0.0483,-15.32094c-0.022,-6.98321-27.35297,-18.91692-43.36154,-17.92354-6.6801,0.41452-14.53817,0.36281-49.53107,14.16878-28.35454,11.18689-34.96193,-30.26526-70.015148,-7.92166-20.263413,12.91629-65.028945,11.74938-46.402413,-11.9186 3.864005,-4.90984-31.952291,6.60201-31.9883626,27.10666l-0.022164,12.59927" fill="#506690" />
+        </g>
+      </g>
+      <g fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m75 80-28 28 28 28m95-56 28 28-28 28m-31-67-26 78" />
       </g>
     </g>
-    <g fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
-      <path d="m75 80-28 28 28 28m95-56 28 28-28 28m-31-67-26 78" />
-    </g>
-  </g>
 
-  <text x="340" y="274" font-family="Inter, Arial, sans-serif" font-size="78" fill="#0f172a">Codespace Like</text>
-  <text x="342" y="334" font-family="Inter, Arial, sans-serif" font-size="34" fill="#334155">Helm Chart</text>
-  <text x="342" y="520" font-family="Inter, Arial, sans-serif" font-size="30" fill="#0f172a">By hoverkraft</text>
-
-  <g transform="translate(946 188) scale(1.05)">
-    <g style="clip-rule:evenodd;fill-rule:evenodd;image-rendering:optimizeQuality;shape-rendering:geometricPrecision;text-rendering:geometricPrecision">
-      <rect width="241.36835" height="247.86084" x="6.3385172" y="8.1042032" ry="17.481256" fill="#1998ff" />
-      <g>
-        <rect width="241.38019" height="41.468822" x="6.3635287" y="214.77875" ry="17.481256" fill="#506690" />
-        <path d="m247.67244,230.81893-0.0483,-15.32094c-0.022,-6.98321-27.35297,-18.91692-43.36154,-17.92354-6.6801,0.41452-14.53817,0.36281-49.53107,14.16878-28.35454,11.18689-34.96193,-30.26526-70.015148,-7.92166-20.263413,12.91629-65.028945,11.74938-46.402413,-11.9186 3.864005,-4.90984-31.952291,6.60201-31.9883626,27.10666l-0.022164,12.59927" fill="#506690" />
-      </g>
-    </g>
-    <g fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
-      <path d="m75 80-28 28 28 28m95-56 28 28-28 28m-31-67-26 78" />
-    </g>
+    <text x="250" y="115" font-family="Inter, Arial, sans-serif" font-size="82" fill="#001d20">Codespace Like</text>
+    <text x="250" y="178" font-family="Inter, Arial, sans-serif" font-size="42" fill="#001d20">By hoverkraft</text>
   </g>
 </svg>
