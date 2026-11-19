@@ -6,3 +6,6 @@
 
 # used by Github Actions and can be committed if not ignored
 node_modules
+
+# Helm values schema belongs to chart directory only
+/values.schema.json
